@@ -6,7 +6,8 @@ const nodemailer = require('nodemailer');
 const app = express();
 const port = 3000;
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '150mb' }));
+app.use(bodyParser.urlencoded({ limit: '150mb', extended: true }));
 app.use(cors());
 
 app.post('/send-email', (req, res) => {
